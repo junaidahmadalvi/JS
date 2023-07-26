@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [
+        {
+          id: 1,
+          age: 34,
+          name: "bill",
+        },
+        {
+          id: 2,
+          name: "ted",
+          age: 12,
+        },
+        {
+          id: 3,
+          name: "usd",
+          age: 45,
+        },
+      ];
+
+      //  ------------------------ map() function in JS---------------------
+
+      // map() creates a new array from calling a function for every array element.
+
+      // map() does not execute the function for empty elements.
+
+      // map() does not change the original array.
+
+      //------------ method 1
+      //   var result = arr.map(({ name, age, id }) => {
+      //     console.log(id + ":   " + name + "," + age);
+      //     // console.log(name, "name");
+      //   });
+      //   console.log(result, "result");
+
+      //------------ method 2
+
+      //    result = arr.map((obj) => {
+      //     // console.log(id + ":   " + name + "," + age);
+      //     console.log(obj, "obj");
+      //     console.log(obj.id, "id");
+      //     console.log(obj.age, "age");
+      //     console.log(obj.name, "name");
+      //     return obj.age + 10;
+      //   });
+      //   console.log(arr, "arr");
+      //   console.log(result, "result");
+
+      result = arr.filter((obj) => {
+        // console.log(id + ":   " + name + "," + age);
+        // console.log(obj, "obj");
+        // console.log(obj.id, "id");
+        // console.log(obj.age, "age");
+        // console.log(obj.name, "name");
+        return obj.age > 18;
+      });
+      console.log(arr, "arr");
+      console.log(result, "result");
+      // ------------------------------------------------------------------------------------------------
+
+      //  ------------------------ filter() function in JS---------------------
+      //   filter() function takes a callback function and
+      //  check specific condition on all element s of array and
+      //  return a new array that contains those elements which fulfil the given condition ,
+      //   it don't change the original array
+
+      let users = [
+        { name: "John", age: 25, occupation: "gardener" },
+        { name: "Lenny", age: 51, occupation: "programmer" },
+        { name: "Andrew", age: 43, occupation: "teacher" },
+        { name: "Peter", age: 81, occupation: "teacher" },
+        { name: "Anna", age: 47, occupation: "programmer" },
+        { name: "Albert", age: 12, occupation: "programmer" },
+      ];
+
+      //  --------------------- make a filter method functonality manually by loop
+
+      //   let filteredUsers = [];
+      //   for (let i = 0; i < users.length; i++) {
+      //     if (users[i].age > 40 && users[i].occupation === "programmer") {
+      //     //   filteredUsers.push({ ...users[i] });
+      //         filteredUsers = [...filteredUsers, users[i]];
+      //     }
+      //   }
+      //   console.log(filteredUsers, "filteredUsers");
+
+      //------------------------- now implementation by filter() method
+
+      filteredUsers = users.filter((obj) => {
+        return obj.age > 40 && obj.occupation === "programmer";
+      });
+      console.log("Users:", users);
+      console.log("Filtered Users using Filter Method:", filteredUsers);
+
+      // ----------------------------------------------------------------------------------------
+
+      //  ------------------------ find() function in JS---------------------
+      // it is just like filter but
+      //  it don't return a array
+      //   it return the first element or object which fulfil the given condition in callback function
+
+      let findedUser = users.find((obj) => {
+        return obj.age > 40 && obj.occupation === "programmer";
+      });
+      console.log("Users:", users);
+      console.log("Finded User using find() Method:", findedUser);
+
+      // ----------------------------------------------------------------------------------------
+
+      //  ------------------------ reduce() function in JS---------------------
+      //       The reduce() method executes a reducer function for array element.
+
+      // The reduce() method returns a single value: the function's accumulated result.
+
+      // The reduce() method does not execute the function for empty array elements.
+
+      // The reduce() method does not change the original array.
+
+      //  ----------------------- implementation
+
+      let numArr = [5, 9, 12, 24, 67];
+
+      let arrSum = numArr.reduce((total, value) => {
+        return total + value;
+      });
+      console.log(numArr);
+      console.log(`The sum of ${numArr} Array Elements are :${arrSum}`);
+
+      let employee = {
+        eid: "E102",
+        ename: "Jack",
+        eaddress: "New York",
+        salary: 50000,
+      };
+
+      console.log("Employee=> ", employee);
+      let newEmployee = employee; // Shallow copy
+      console.log("New Employee=> ", newEmployee);
+
+      console.log("---------After modification----------");
+      newEmployee.ename = "Beck";
+      console.log("Employee=> ", employee);
+      console.log("New Employee=> ", newEmployee);
+      // Name of the employee as well as
+      // newEmployee is changed.
+
+      //-------Deep Copy-----------------------
+
+      let employee2 = {
+        eid: "E102",
+        ename: "Jack",
+        eaddress: "New York",
+        salary: 50000,
+      };
+      console.log("=========Deep Copy========");
+      let newEmployee2 = JSON.parse(JSON.stringify(employee2));
+      console.log("Employee2=> ", employee2);
+      console.log("New Employee2=> ", newEmployee2);
+      console.log("---------After modification---------");
+      newEmployee2.ename = "Beck";
+      newEmployee2.salary = 70000;
+      console.log("Employee2=> ", employee2);
+      console.log("New Employee2=> ", newEmployee2);
+    </script>
+  </body>
+</html>

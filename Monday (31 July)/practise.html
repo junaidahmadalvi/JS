@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Click Me</button>
+
+    <p>Button clicked for <span id="count">0</span> times</p>
+
+    <script>
+      // Array destructuring in function parameters
+      function printNumbers([first, second, third]) {
+        console.log(
+          "-----------------Array Destructuring in function-------------------"
+        );
+
+        console.log(first, second, third, "Destructing in Function");
+      }
+
+      const numbers = [1, 2, 3, 4, 5];
+      let personArr = [
+        {
+          firstName: "John",
+          lastName: "Doe",
+          age: 30,
+        },
+        {
+          firstName: "John2",
+          lastName: "Doe2",
+          age: 30,
+        },
+        56,
+      ];
+      let [first, second, third] = personArr;
+
+      console.log("-----------------Array Destructuring-------------------");
+
+      console.log(first, second, third, "Array Destrcting");
+
+      printNumbers(personArr); // Output: 1 2 3
+
+      // An object with properties
+      const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 30,
+      };
+
+      // Object Destructuring
+      const { firstName, age, lastName } = person;
+      console.log("-----------------Object Destructuring-------------------");
+
+      console.log(firstName); // Output: John
+      console.log(lastName); // Output: Doe
+      console.log(age); // Output: 30
+
+      //   object destructring also allow default parameters
+      (function bobjectDesdtructing({ firstName, age = 45, lastName }) {
+        console.log(
+          "-----------------Object Destructuring in function-------------------"
+        );
+
+        return console.log(`${firstName} ${lastName}, Age:${age}`);
+      })(person);
+
+      // ---------------------------------------------------------------------------------------
+
+      //------------EventListeners in Js-------------------
+
+      function attatchEventListeners() {
+        let counter = 0;
+        document.getElementById("btn").addEventListener("click", function () {
+          console.log("buttton clicked");
+          counter++;
+          document.getElementById("count").innerHTML = counter;
+        });
+      }
+      attatchEventListeners();
+
+      // ---------------------------------------------------------------------------------------
+
+      // ----------------------Function overloading failure in js------------------
+
+      function sum(x, y, z) {
+        console.log(
+          "---------------rest operators with multiple varriables----------------"
+        );
+      }
+
+      console.log(sum(6235, 434, 365));
+
+      function sum(x, y) {
+        console.log("---------only rest operators-----------");
+      }
+
+      console.log(sum(6235, 434, 365));
+    </script>
+  </body>
+</html>
